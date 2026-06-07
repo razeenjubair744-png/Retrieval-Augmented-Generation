@@ -1,6 +1,7 @@
 """Document processing module for loading and splitting documents"""
 
 from typing import List
+import uuid
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document

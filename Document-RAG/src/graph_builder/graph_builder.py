@@ -1,6 +1,7 @@
 """Graph builder for LangGraph workflow"""
 
 from langgraph.graph import StateGraph, END
+import uuid
 from src.state.rag_state import RAGState
 from src.node.reactnode import RAGNodes
 

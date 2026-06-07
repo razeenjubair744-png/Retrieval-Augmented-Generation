@@ -1,6 +1,7 @@
 """RAG state definition for LangGraph"""
 
 from typing import List
+import uuid
 from pydantic import BaseModel
 from langchain_core.documents import Document
 

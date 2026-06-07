@@ -1,6 +1,7 @@
 """Vector store module for document embedding and retrieval"""
 
 from typing import List
+import uuid
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document

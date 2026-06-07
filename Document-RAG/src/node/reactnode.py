@@ -1,6 +1,7 @@
 """LangGraph nodes for RAG workflow + ReAct Agent inside generate_content"""
 
 from typing import List, Optional
+import uuid
 from src.state.rag_state import RAGState
 
 from langchain_core.documents import Document
