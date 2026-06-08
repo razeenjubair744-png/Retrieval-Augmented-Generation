@@ -7,7 +7,7 @@ API_URL = "http://localhost:8000"
 def test():
     print("1. Creating dummy url.txt...")
     with open("url.txt", "w") as f:
-        f.write("This is a dummy url.txt file with some content.")
+        f.write("")
         
     print("2. Uploading to /api/init/files...")
     with open("url.txt", "rb") as f:

@@ -13,6 +13,9 @@ import uuid
 # Fix any obscure 3rd-party missing import errors for uuid globally
 builtins.uuid = uuid
 
+# Set USER_AGENT so Wikipedia API doesn't block the request
+os.environ["USER_AGENT"] = "DocumentRAG/1.0 (admin@example.com)"
+
 # Fix python path since api is inside Document-RAG
 import sys
 sys.path.append(str(Path(__file__).parent.parent))

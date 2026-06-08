@@ -53,10 +53,17 @@ class RAGNodes:
         wiki = WikipediaQueryRun(
             api_wrapper=WikipediaAPIWrapper(top_k_results=3, lang="en")
         )
+        
+        def safe_wiki_run(query: str) -> str:
+            try:
+                return wiki.run(query)
+            except Exception as e:
+                return f"Wikipedia is currently unavailable due to an API error: {str(e)}"
+
         wikipedia_tool = Tool(
             name="wikipedia",
             description="Search Wikipedia for general knowledge.",
-            func=wiki.run,
+            func=safe_wiki_run,
         )
 
         return [retriever_tool, wikipedia_tool]
