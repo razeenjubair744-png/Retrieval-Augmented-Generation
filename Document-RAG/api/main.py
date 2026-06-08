@@ -94,7 +94,20 @@ async def init_files(
                 if file.filename.lower().endswith('.pdf'):
                     documents = doc_processor.process_pdf(temp_path)
                 else:
-                    documents = doc_processor.process_file(temp_path)
+                    # Check if the file contains a list of URLs
+                    try:
+                        with open(temp_path, "r", encoding="utf-8") as f:
+                            lines = [line.strip() for line in f if line.strip()]
+                        
+                        # If file only has URLs, use process_urls to scrape them
+                        if lines and all(line.startswith("http://") or line.startswith("https://") for line in lines):
+                            documents = doc_processor.process_urls(lines)
+                        else:
+                            documents = doc_processor.process_file(temp_path)
+                    except UnicodeDecodeError:
+                        # Fallback for binary or non-utf8 files
+                        documents = doc_processor.process_file(temp_path)
+                        
                 all_documents.extend(documents)
                 
         if not all_documents:
