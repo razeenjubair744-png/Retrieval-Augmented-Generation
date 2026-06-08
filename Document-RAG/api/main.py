@@ -7,6 +7,11 @@ import os
 import shutil
 import tempfile
 from pathlib import Path
+import builtins
+import uuid
+
+# Fix any obscure 3rd-party missing import errors for uuid globally
+builtins.uuid = uuid
 
 # Fix python path since api is inside Document-RAG
 import sys
